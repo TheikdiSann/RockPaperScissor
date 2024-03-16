@@ -7,15 +7,20 @@ function getComputerChoice(){
 
 
 function getPlayerChoice(){
-    let playerChoice
+    let playerChoice, isCorrectWord
     do {
         playerChoice = prompt("Enter a choice of Rock, Paper, Scissor")
-    } while (playerChoice || gettingIncorrectInput(playerChoice));
+        isCorrectWord = gettingIncorrectInput(playerChoice)
+    } while (!playerChoice || !isCorrectWord);
+
+    return playerChoice
     
 }
 
 function gettingIncorrectInput(playerChoice){
    let isIncluded =  choices.filter((choice)=>choice === playerChoice.toLowerCase())
-    return isIncluded.length > 0 ? isIncluded[0] : false
+    return isIncluded.length > 0 ? isIncluded[0] : ''
 }
 
+console.log(getComputerChoice())
+console.log(getPlayerChoice())
